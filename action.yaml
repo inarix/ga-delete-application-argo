@@ -11,8 +11,10 @@ inputs:
     description: 'ArgoCD token required to send API requests'
     required: true
 outputs:
-  deleted: # id of output
+  deleted:
     description: 'Boolean representation of the application being deleted or not'
+  reason:
+    description: 'Reason of failure in cas of it'
 runs:
   using: 'docker'
   image: 'Dockerfile'
