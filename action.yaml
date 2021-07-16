@@ -1,20 +1,24 @@
-name: 'ga-delete-application-argo'
-description: 'Delete an ArgoCD application if exists'
+name: "ga-delete-application-argo"
+description: "Delete an ArgoCD application if exists"
+branding:
+  color: blue
+  icon: airplay
+author: "Alexandre Saison <alexandre.saison@inarix.com>"
 inputs:
   argoserver:
-    description: 'Host of the ArgoCD server'
+    description: "Host of the ArgoCD server"
     required: true
   application:
-    description: 'Name of the application to delete'
+    description: "Name of the application to delete"
     required: true
   token:
-    description: 'ArgoCD token required to send API requests'
+    description: "ArgoCD token required to send API requests"
     required: true
 outputs:
   deleted:
-    description: 'Boolean representation of the application being deleted or not'
+    description: "Boolean representation of the application being deleted or not"
   reason:
-    description: 'Reason of failure in cas of it'
+    description: "Reason of failure in cas of it"
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"

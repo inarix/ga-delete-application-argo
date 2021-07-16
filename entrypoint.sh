@@ -14,7 +14,7 @@ then
     exit 1
 fi
 
-APPLICATION_EXISTS_HTTP_CODE=$(curl --write-out %{http_code} --silent --output /dev/null -H "Authorization: Bearer $INPUT_TOKEN"  $INPUT_ARGOSERVER/api/v1/applications/$INPUT_APPLICATION)
+APPLICATION_EXISTS_HTTP_CODE=$(curl --write-out %{http_code} --silent --output /dev/null -H "Authorization: Bearer $INPUT_TOKEN"  $INPUT_ARGOSERVER/api/v1/applications/$INPUT_APPLICATION?cascade=true)
 
 if [[ $APPLICATION_EXISTS_HTTP_CODE -eq 000 ]]
 then
