@@ -14,6 +14,13 @@ then
     exit 1
 fi
 
+if [[ "$INPUT_APPLICATION" =~ ^mt-[a-zA-Z0-9\-]+v[0-9\-]+[0-9]$ ]]
+then
+    echo "[$(date +"%m/%d/%y %T")] Forbidden deletion! Potential production model $INPUT_APPLICATION"
+    exit 1
+fi
+
+
 APPLICATION_EXISTS_HTTP_CODE=$(curl --write-out %{http_code} --silent --output /dev/null -H "Authorization: Bearer $INPUT_TOKEN"  $INPUT_ARGOSERVER/api/v1/applications/$INPUT_APPLICATION?cascade=true)
 
 if [[ $APPLICATION_EXISTS_HTTP_CODE -eq 000 ]]
